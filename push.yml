@@ -1,0 +1,59 @@
+# Zenn 記事バックログ定義ファイル
+#
+# CoWork が毎日このファイルを読み、「今日やること」が空のときに記事タスクを補充する。
+# - status: draft   → まだ書いていない / 書きかけ
+# - status: review  → ドラフト完成済み・投稿判断待ち
+# - status: done    → Zenn に投稿済み（ここに残しておくと重複防止になる）
+#
+# 使い方:
+#   1. articles: リストに追加する（status: draft で追加）
+#   2. ドラフトが完成したら status を review に変更する
+#   3. 投稿したら status を done に変更する
+#
+# CoWork の補充ルール:
+#   - status: draft の先頭1件を「今日やること」に追加する
+#   - status: review のものは「Zenn 記事投稿判断」タスクとして追加する
+
+articles:
+  - slug: "zenn-article-cpp-value-objects"
+    title: "C++17で値オブジェクトをDDD実装する"
+    file: "articles/zenn-article-cpp-value-objects.md"
+    status: draft
+    memo: "ファクトリパターン・Result<T>・イミュータブル設計の解説"
+
+  - slug: "github-actions-issue-from-yaml"
+    title: "YAMLをpushするだけでGitHub Issueを自動登録する仕組みをGitHub Actionsで作った"
+    file: "articles/github-actions-issue-from-yaml.md"
+    status: review
+    memo: "yq・gh label create --force・workflow_dispatch の詰まりポイントを含む"
+
+  - slug: "zenn-article-ddd-schema"
+    title: "DDDを意識したPostgreSQLスキーマ設計：OKR管理ツールを題材に"
+    file: "articles/zenn-article-ddd-schema.md"
+    status: review
+    memo: "集約境界・CHECK制約・kr_type・updated_atトリガー"
+
+  - slug: "devcontainer-postgres-claude-code"
+    title: "DevContainer+Claude CodeでRDB学習環境を構築した ― 詰まったポイント4つも解説"
+    file: "articles/devcontainer-postgres-claude-code.md"
+    status: review
+    memo: "docker-entrypoint-initdb.d の落とし穴を追記済み"
+
+  - slug: "ddd-cpp-entity-impl"
+    title: "C++17でDDDエンティティを実装する"
+    file: "articles/ddd-cpp-entity-impl.md"
+    status: draft
+    memo: ""
+
+  - slug: "ddd-cpp-repository-interface"
+    title: "C++17でDDD Repositoryインターフェースを設計する"
+    file: "articles/ddd-cpp-repository-interface.md"
+    status: draft
+    memo: ""
+
+# 投稿済み
+  - slug: "github-actions-pr-review-api-journey"
+    title: "GitHub Actions AI レビュー API 失敗記録"
+    file: "articles/github-actions-pr-review-api-journey.md"
+    status: done
+    published_at: "2026-05-22"
