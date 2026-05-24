@@ -18,7 +18,7 @@ articles:
   - slug: "zenn-article-cpp-value-objects"
     title: "C++17で値オブジェクトをDDD実装する"
     file: "articles/zenn-article-cpp-value-objects.md"
-    status: draft
+    status: review
     memo: "ファクトリパターン・Result<T>・イミュータブル設計の解説"
 
   - slug: "github-actions-issue-from-yaml"
@@ -42,14 +42,14 @@ articles:
   - slug: "ddd-cpp-entity-impl"
     title: "C++17でDDDエンティティを実装する"
     file: "articles/ddd-cpp-entity-impl.md"
-    status: draft
-    memo: ""
+    status: review
+    memo: "Result<T> default constructor問題・UuidId<Tag>テンプレート・集約ルートと内部エンティティの区別"
 
   - slug: "ddd-cpp-repository-interface"
     title: "C++17でDDD Repositoryインターフェースを設計する"
     file: "articles/ddd-cpp-repository-interface.md"
-    status: draft
-    memo: ""
+    status: review
+    memo: "純粋仮想クラス・Result<optional<T>>・集約ルートのみRepository・DIP"
 
 # 投稿済み
   - slug: "github-actions-pr-review-api-journey"
