@@ -15,9 +15,9 @@
 #   - status: review のものは「Zenn 記事投稿判断」タスクとして追加する
 
 articles:
-  - slug: "claude-code-custom-commands"
+  - slug: "claude-code-slash-commands-workflow"
     title: "Claude Codeのカスタムスラッシュコマンドで開発ルーティンを自動化する"
-    file: "articles/claude-code-custom-commands.md"
+    file: "articles/claude-code-slash-commands-workflow.md"
     status: review
     memo: ".claude/commands/ に md を置くだけ・pr-description / zenn / career-push の実例・複数リポジトリの集約方法"
 
