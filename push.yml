@@ -15,6 +15,12 @@
 #   - status: review のものは「Zenn 記事投稿判断」タスクとして追加する
 
 articles:
+  - slug: "claude-code-custom-commands"
+    title: "Claude Codeのカスタムスラッシュコマンドで開発ルーティンを自動化する"
+    file: "articles/claude-code-custom-commands.md"
+    status: review
+    memo: ".claude/commands/ に md を置くだけ・pr-description / zenn / career-push の実例・複数リポジトリの集約方法"
+
   - slug: "zenn-article-cpp-value-objects"
     title: "C++17で値オブジェクトをDDD実装する"
     file: "articles/zenn-article-cpp-value-objects.md"
