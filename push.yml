@@ -15,6 +15,12 @@
 #   - status: review のものは「Zenn 記事投稿判断」タスクとして追加する
 
 articles:
+  - slug: "cpp-ddd-cli-presentation"
+    title: "C++17 × DDD でCLIプレゼンテーション層を実装する――UseCase の DI と対話型 REPL 設計"
+    file: "articles/cpp-ddd-cli-presentation.md"
+    status: review
+    memo: "CliApp.hpp の REPL 設計・DI パターン・Result<void>の落とし穴・ostream注入によるテスト可能設計"
+
   - slug: "claude-code-slash-commands-workflow"
     title: "Claude Codeのカスタムスラッシュコマンドで開発ルーティンを自動化する"
     file: "articles/claude-code-slash-commands-workflow.md"
