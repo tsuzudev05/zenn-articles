@@ -15,6 +15,12 @@
 #   - status: review のものは「Zenn 記事投稿判断」タスクとして追加する
 
 articles:
+  - slug: "go-ddd-full-aggregates"
+    title: "Go × DDD で全集約を実装する――C++17実装との比較でパターンの本質を理解する"
+    file: "articles/go-ddd-full-aggregates.md"
+    status: review
+    memo: "Team/Period/Objective/KeyResult全集約・全置換vsappend-only保存戦略・C++Result<T>との対応・pgx v5イディオム"
+
   - slug: "cpp-ddd-cli-presentation"
     title: "C++17 × DDD でCLIプレゼンテーション層を実装する――UseCase の DI と対話型 REPL 設計"
     file: "articles/cpp-ddd-cli-presentation.md"
