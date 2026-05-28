@@ -15,6 +15,12 @@
 #   - status: review のものは「Zenn 記事投稿判断」タスクとして追加する
 
 articles:
+  - slug: "zed-devcontainer-windows-setup"
+    title: "ZedエディタでDevContainerを使う on Windows ― 詰まったエラー2つと解決策"
+    file: "articles/zed-devcontainer-windows-setup.md"
+    status: review
+    memo: "features exit code 126問題・コンテナ名競合・Dockerfileと重複するfeaturesを削除する解決策"
+
   - slug: "go-ddd-full-aggregates"
     title: "Go × DDD で全集約を実装する――C++17実装との比較でパターンの本質を理解する"
     file: "articles/go-ddd-full-aggregates.md"

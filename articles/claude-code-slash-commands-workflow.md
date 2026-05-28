@@ -145,7 +145,7 @@ Zenn 記事のバックログを YAML ファイルで管理しているのです
 私のように複数のリポジトリ（学習用・記事用・ログ用）を 1 つのワークスペースで管理している場合、**ワークスペースルートの `.claude/commands/` に集約すると便利です**。
 
 ```
-転職に向けたスキルアップ/          ← ここで claude を起動
+job-change-prep/          ← ここで claude を起動
 ├── .claude/
 │   └── commands/
 │       ├── pr-description.md     # rdb-learning-postgres の PR 文生成
