@@ -15,6 +15,18 @@
 #   - status: review のものは「Zenn 記事投稿判断」タスクとして追加する
 
 articles:
+  - slug: "github-actions-auto-pr"
+    title: "GitHub Actions で PR を自動作成する――詰まったポイント5つと解決策"
+    file: "articles/github-actions-auto-pr.md"
+    status: review
+    memo: "GITHUB_TOKEN制限・Re-run問題・Run workflowボタン非表示・feature branch checkout問題・Use workflow from選択ミス"
+
+  - slug: "go-testcontainers-postgres"
+    title: "testcontainers-go で PostgreSQL 統合テストを書く――モックを捨てて本物のDBで確かめる"
+    file: "articles/go-testcontainers-postgres.md"
+    status: review
+    memo: "SetupPostgres/TruncateAll の実装解説・WithOccurrence(2)の理由・モック vs testcontainers 使い分け"
+
   - slug: "zed-devcontainer-windows-setup"
     title: "ZedエディタでDevContainerを使う on Windows ― 詰まったエラー2つと解決策"
     file: "articles/zed-devcontainer-windows-setup.md"
