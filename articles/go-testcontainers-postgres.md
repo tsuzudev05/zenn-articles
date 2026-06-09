@@ -415,6 +415,103 @@ ok  github.com/tsuzudev05/rdb-learning-postgres/okr/infrastructure/repository
 
 ---
 
+## さらなる詰まり：KeyResult の `current_value` がテストで nil になる
+
+DB汚染問題を解決して全テストを流したところ、今度は KeyResult 関連のテストが失敗しました。
+
+### 症状
+
+```
+--- FAIL: TestPgKeyResultRepository_Save_WithProgressLog
+    pg_key_result_repository_test.go:XX:
+        CurrentValue = <nil>, want 75.0
+```
+
+ProgressLog を追加して Save した後、`FindByID` で取得した KeyResult の `CurrentValue()` が `nil` になっていました。
+
+### 原因の特定
+
+`pg_key_result_repository.go` の `scanKeyResult` を読むと、こんなコードがありました。
+
+```go
+func scanKeyResult(row pgx.Row) (keyresult.KeyResult, error) {
+    var (
+        // ...
+        currentValue *float64
+        // ...
+    )
+    err := row.Scan(
+        // ..., &currentValue, ...
+    )
+    _ = currentValue  // ← 読んで捨てていた！
+    // ...
+}
+```
+
+DB から `current_value` を読み込んでいるのに `_ = currentValue` で捨てており、KeyResult の組み立て時に使われていませんでした。
+
+`WithProgressLogs`（`key_result.go`）も問題でした。
+
+```go
+// 修正前
+func (k KeyResult) WithProgressLogs(logs []KrProgressLog) KeyResult {
+    k.progressLogs = logs  // ログをセットするだけ
+    return k
+}
+```
+
+`FindByID` の実装では `scanKeyResult` でキーリザルト本体を読んだ後、`WithProgressLogs` でログを付け直す設計になっています。しかし `currentValue` が復元されていないため、ProgressLog があっても `CurrentValue()` は常に `nil` でした。
+
+### 修正
+
+**`WithProgressLogs` で最新ログから `currentValue` / `isCompleted` を再導出する**方針で修正しました。ProgressLog は `recorded_at ASC` 順で取得されるため、スライスの末尾が最新値になります。
+
+```go
+// 修正後
+func (k KeyResult) WithProgressLogs(logs []KrProgressLog) KeyResult {
+    k.progressLogs = logs
+    if len(logs) == 0 {
+        return k
+    }
+    latest := logs[len(logs)-1]
+    if k.krType == KrTypeNumeric && latest.NumericValue() != nil {
+        k.currentValue = latest.NumericValue()
+    }
+    if k.krType == KrTypeCheckbox && latest.Completed() != nil {
+        k.isCompleted = *latest.Completed()
+    }
+    return k
+}
+```
+
+合わせて `scanKeyResult` の死んだコード（`_ = currentValue`）を削除しました。
+
+### この問題が起きやすい背景
+
+DDD の集約を DB から復元するとき、「どこで状態を組み立てるか」が分散しがちです。
+
+今回のケースは以下の2箇所が責務を中途半端に持っていました。
+
+| 場所 | 本来の責務 | 実際の状態 |
+|---|---|---|
+| `scanKeyResult` | KeyResult 本体（`current_value` 含む）を復元 | `current_value` を読んで捨てていた |
+| `WithProgressLogs` | ProgressLog をアタッチ | ログをセットするだけで状態を更新しなかった |
+
+**統合テストがなければ気づけなかったバグ**です。モックでは Repository の実装ロジックを通らないため、このような「DB→ドメインオブジェクトへの変換ミス」は単体テストでは発見できません。
+
+### 修正後の出力
+
+```
+--- PASS: TestPgKeyResultRepository_Save_and_FindByID_Numeric (0.01s)
+--- PASS: TestPgKeyResultRepository_Save_and_FindByID_Checkbox (0.01s)
+--- PASS: TestPgKeyResultRepository_Save_WithProgressLog (0.01s)
+--- PASS: TestPgKeyResultRepository_FindByObjectiveID (0.01s)
+--- PASS: TestPgKeyResultRepository_Remove (0.01s)
+ok  github.com/tsuzudev05/rdb-learning-postgres/okr/infrastructure/repository
+```
+
+---
+
 ## まとめ
 
 - testcontainers-go を使うと `go test` だけで本物の PostgreSQL コンテナが起動する
@@ -422,6 +519,7 @@ ok  github.com/tsuzudev05/rdb-learning-postgres/okr/infrastructure/repository
 - DevContainer 内は Docker-in-Docker の制約があるため `DATABASE_URL` の有無で接続先を切り替えるハイブリッド方式が現実的
 - 既存DBに直接接続する場合は **専用テストDBを作成 → `DROP SCHEMA public CASCADE` でクリーンリセット** が安全
 - `CREATE DATABASE` の重複エラーは SQLSTATE `42P04` で識別して無視することで冪等化できる
+- DB→ドメインオブジェクトへの変換ミスはモックでは発見できない。**統合テストが「実装が本当に正しいか」を保証する最後の砦**
 
 ---
 

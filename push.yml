@@ -18,25 +18,41 @@ articles:
   - slug: "github-actions-auto-pr"
     title: "GitHub Actions で PR を自動作成する――詰まったポイント5つと解決策"
     file: "articles/github-actions-auto-pr.md"
-    status: review
+    status: done
+    published_at: "2026-06-03"
     memo: "GITHUB_TOKEN制限・Re-run問題・Run workflowボタン非表示・feature branch checkout問題・Use workflow from選択ミス"
 
   - slug: "go-testcontainers-postgres"
     title: "testcontainers-go で PostgreSQL 統合テストを書く――モックを捨てて本物のDBで確かめる"
     file: "articles/go-testcontainers-postgres.md"
-    status: review
+    status: done
+    published_at: "2026-06-04"
     memo: "SetupPostgres/TruncateAll の実装解説・WithOccurrence(2)の理由・モック vs testcontainers 使い分け"
 
   - slug: "zed-devcontainer-windows-setup"
     title: "ZedエディタでDevContainerを使う on Windows ― 詰まったエラー2つと解決策"
     file: "articles/zed-devcontainer-windows-setup.md"
-    status: review
+    status: done
+    published_at: "2026-06-07"
     memo: "features exit code 126問題・コンテナ名競合・Dockerfileと重複するfeaturesを削除する解決策"
+
+  - slug: "go-otel-span-propagation-repository"
+    title: "Go × OpenTelemetry でスパン伝播と Repository トレーシングを実装する"
+    file: "articles/go-otel-span-propagation-repository.md"
+    status: review
+    memo: "W3C TraceContext SetTextMapPropagator・Repository メソッドへのスパン追加パターン・Jaeger UI での親子スパン確認"
+
+  - slug: "go-opentelemetry-jaeger-devcontainer"
+    title: "Go × OpenTelemetry + Jaeger を DevContainer に組み込む――詰まったポイントと最終構成"
+    file: "articles/go-opentelemetry-jaeger-devcontainer.md"
+    status: review
+    memo: "grpc.Dial deprecated→NewClient・Zed DevContainer Rebuild方法・devcontainer.json forwardPorts・otelecho ミドルウェア"
 
   - slug: "go-ddd-full-aggregates"
     title: "Go × DDD で全集約を実装する――C++17実装との比較でパターンの本質を理解する"
     file: "articles/go-ddd-full-aggregates.md"
-    status: review
+    status: done
+    published_at: "2026-06-08"
     memo: "Team/Period/Objective/KeyResult全集約・全置換vsappend-only保存戦略・C++Result<T>との対応・pgx v5イディオム"
 
   - slug: "cpp-ddd-cli-presentation"
