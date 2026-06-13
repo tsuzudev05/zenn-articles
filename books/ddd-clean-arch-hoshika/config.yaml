@@ -1,0 +1,12 @@
+title: "RustでDDD + Clean Architectureを実践する ─ ホシカ開発記"
+summary: "個人開発アプリ「ホシカ」（欲しいものリスト × 予算管理）を題材に、DDD + Clean Architectureを体得する過程を記録したbook。ユビキタス言語・集約設計・コンテキストマップをRustで実装するまでを扱う。"
+topics: ["ddd", "cleanarchitecture", "rust", "設計"]
+published: false
+price: 0
+chapters:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
