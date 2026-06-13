@@ -39,13 +39,15 @@ articles:
   - slug: "go-otel-span-propagation-repository"
     title: "Go × OpenTelemetry でスパン伝播と Repository トレーシングを実装する"
     file: "articles/go-otel-span-propagation-repository.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "W3C TraceContext SetTextMapPropagator・Repository メソッドへのスパン追加パターン・Jaeger UI での親子スパン確認"
 
   - slug: "go-opentelemetry-jaeger-devcontainer"
     title: "Go × OpenTelemetry + Jaeger を DevContainer に組み込む――詰まったポイントと最終構成"
     file: "articles/go-opentelemetry-jaeger-devcontainer.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "grpc.Dial deprecated→NewClient・Zed DevContainer Rebuild方法・devcontainer.json forwardPorts・otelecho ミドルウェア"
 
   - slug: "go-ddd-full-aggregates"
@@ -58,49 +60,57 @@ articles:
   - slug: "cpp-ddd-cli-presentation"
     title: "C++17 × DDD でCLIプレゼンテーション層を実装する――UseCase の DI と対話型 REPL 設計"
     file: "articles/cpp-ddd-cli-presentation.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "CliApp.hpp の REPL 設計・DI パターン・Result<void>の落とし穴・ostream注入によるテスト可能設計"
 
   - slug: "claude-code-slash-commands-workflow"
     title: "Claude Codeのカスタムスラッシュコマンドで開発ルーティンを自動化する"
     file: "articles/claude-code-slash-commands-workflow.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: ".claude/commands/ に md を置くだけ・pr-description / zenn / career-push の実例・複数リポジトリの集約方法"
 
   - slug: "zenn-article-cpp-value-objects"
     title: "C++17で値オブジェクトをDDD実装する"
     file: "articles/zenn-article-cpp-value-objects.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "ファクトリパターン・Result<T>・イミュータブル設計の解説"
 
   - slug: "github-actions-issue-from-yaml"
     title: "YAMLをpushするだけでGitHub Issueを自動登録する仕組みをGitHub Actionsで作った"
     file: "articles/github-actions-issue-from-yaml.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "yq・gh label create --force・workflow_dispatch の詰まりポイントを含む"
 
   - slug: "zenn-article-ddd-schema"
     title: "DDDを意識したPostgreSQLスキーマ設計：OKR管理ツールを題材に"
     file: "articles/zenn-article-ddd-schema.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "集約境界・CHECK制約・kr_type・updated_atトリガー"
 
   - slug: "devcontainer-postgres-claude-code"
     title: "DevContainer+Claude CodeでRDB学習環境を構築した ― 詰まったポイント4つも解説"
     file: "articles/devcontainer-postgres-claude-code.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "docker-entrypoint-initdb.d の落とし穴を追記済み"
 
   - slug: "ddd-cpp-entity-impl"
     title: "C++17でDDDエンティティを実装する"
     file: "articles/ddd-cpp-entity-impl.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "Result<T> default constructor問題・UuidId<Tag>テンプレート・集約ルートと内部エンティティの区別"
 
   - slug: "ddd-cpp-repository-interface"
     title: "C++17でDDD Repositoryインターフェースを設計する"
     file: "articles/ddd-cpp-repository-interface.md"
-    status: review
+    status: done
+    published_at: "2026-06-09"
     memo: "純粋仮想クラス・Result<optional<T>>・集約ルートのみRepository・DIP"
 
 # 投稿済み
