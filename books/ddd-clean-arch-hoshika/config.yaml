@@ -4,10 +4,10 @@ topics: ["ddd", "cleanarchitecture", "rust", "設計"]
 published: false
 price: 0
 chapters:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+  - "5"
+  - "6"
+  - "7"
